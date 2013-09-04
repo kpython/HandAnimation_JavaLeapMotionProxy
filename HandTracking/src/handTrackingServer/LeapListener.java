@@ -145,6 +145,13 @@ class LeapListener extends Listener {
             if (fingerList.count() < 5){
             	calibrationNeeded = true;
             }
+            
+            // If no finger are detected, the hand is probably closed
+            if (fingerList.count() == 0){
+            	for(int j=0; j<5; j++){
+            		fingerFlexion[j] = 1.0f;
+                }
+            }
 
 			// Create a JSON Object and truncate float value to delete
 			// insignificant data.
